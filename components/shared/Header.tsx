@@ -11,7 +11,7 @@ type Props = {
 
 function Header({className}: Props) {
   return (
-    <header className={cn('', className)}>
+    <header className={cn('border-b', className)}>
       <Container className='flex items-center justify-between py-8'>
         <div>
           <Image src='/logo.png' alt='Logo/' width={35} height={35} />
