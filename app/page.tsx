@@ -1,6 +1,4 @@
-import Categorites from "@/components/shared/Categorites";
 import Container from "@/components/shared/Container";
-import SortPopup from "@/components/shared/SortPopup";
 import { Title } from "@/components/shared/Title";
 import TopBar from "@/components/shared/TopBar";
 
@@ -12,6 +10,14 @@ export default function Home() {
       </Container>
 
       <TopBar />
+
+      <Container className="pb-14">
+        <div className="flex gap-[60px]">
+          <div className="w-[250px]">
+            {/* <Filters /> */}
+          </div>
+        </div>
+      </Container>
     </>
   );
 }
