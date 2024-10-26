@@ -49,6 +49,20 @@ export default function Home() {
                 categoryId={2}
                 listCassName=""
               />
+
+              <ProductsGroup
+                title="Десерты"
+                items={[
+                  { id: 1, name: 'Чизбургер-пицца', price: 550, imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D6175C10773BFE36E56D48DF7E3.avif', items: [{ price: 550 }], },
+                  { id: 2, name: 'Чизбургер-пицца', price: 550, imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D6175C10773BFE36E56D48DF7E3.avif', items: [{ price: 550 }], },
+                  { id: 3, name: 'Чизбургер-пицца', price: 550, imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D6175C10773BFE36E56D48DF7E3.avif', items: [{ price: 550 }], },
+                  { id: 4, name: 'Чизбургер-пицца', price: 550, imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D6175C10773BFE36E56D48DF7E3.avif', items: [{ price: 550 }], },
+                  { id: 5, name: 'Чизбургер-пицца', price: 550, imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D6175C10773BFE36E56D48DF7E3.avif', items: [{ price: 550 }], },
+                  { id: 6, name: 'Чизбургер-пицца', price: 550, imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D6175C10773BFE36E56D48DF7E3.avif', items: [{ price: 550 }], },
+                ]}
+                categoryId={3}
+                listCassName=""
+              />
             </div>
           </div>
         </div>
