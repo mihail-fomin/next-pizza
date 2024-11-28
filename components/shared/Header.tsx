@@ -4,6 +4,7 @@ import Container from './Container'
 import Image from 'next/image'
 import { Button } from '../ui'
 import { ArrowRight, ShoppingCart, User } from 'lucide-react'
+import { SearchInput } from './SearchInput'
 
 type Props = {
   className: string
@@ -19,6 +20,10 @@ function Header({className}: Props) {
             <h1 className='text-2xl uppercase font-black'>Next Pizza</h1>
             <p className='text-sm text-gray-400 leading-3'>вкусней уже некуда</p>
           </div>
+        </div>
+
+        <div className='mx-10 flex-1'>
+            <SearchInput />
         </div>
 
         <div className='flex items-center gap-3'>
