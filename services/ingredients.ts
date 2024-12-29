@@ -4,7 +4,7 @@ import { ApiRoutes } from './constants'
 
 export const getAll = async (): Promise<Ingredient[]> => {
     const { data } = await axiosInstance.get<Ingredient[]>(
-        ApiRoutes.SEARCH_PRODUCTS,
+        ApiRoutes.FETCH_INGREDIENTS,
     )
 
     return data
