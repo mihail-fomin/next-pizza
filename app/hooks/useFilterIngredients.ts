@@ -1,7 +1,6 @@
-import { API } from "@/services/api-client"
-import { Ingredient } from "@prisma/client"
-import { useEffect, useState } from "react"
-
+import { API } from '@/services/api-client'
+import { Ingredient } from '@prisma/client'
+import { useEffect, useState } from 'react'
 
 interface ReturnProps {
     ingredients: Ingredient[]

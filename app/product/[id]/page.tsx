@@ -6,10 +6,8 @@ type Props = {
     }
 }
 
-function ProductPage({ params: { id }}: Props) {
-  return (
-    <div>{id}</div>
-  )
+function ProductPage({ params: { id } }: Props) {
+    return <div>{id}</div>
 }
 
 export default ProductPage
