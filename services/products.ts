@@ -9,7 +9,3 @@ export const search = async (query: string): Promise<Product[]> => {
 
   return data
 }
-
-export const products = async() => {
-    return await axiosInstance.get<Product[]>('/products')
-}

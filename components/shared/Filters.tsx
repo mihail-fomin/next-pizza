@@ -1,13 +1,20 @@
+'use client'
+
 import React from 'react'
 import { Title } from './Title'
 import { FilterCheckbox } from './FilterCheckBox'
 import { Input } from '../ui'
 import { RangeSlider } from './Range-slider'
 import CheckboxFiltersGroup from '../ui/checkbox-filters-group'
+import { useFilterIngredients } from '@/app/hooks/useFilterIngredients'
 
 type Props = {}
 
 const Filters = (props: Props) => {
+    const { ingredients } = useFilterIngredients()
+
+    const items = ingredients.map((item) => ({ value: String(item.id), text: item.name }))
+
   return (
     <div>
       <Title text='Фильтрация' size='sm' className='mb-5 font-bold'/>
@@ -30,22 +37,8 @@ const Filters = (props: Props) => {
         title='Ингредиенты'
         className='mt-5'
         limit={5}
-        defaultItems={[
-          { text: 'Пепперони', value: 'pepperoni' },
-          { text: 'Бекон', value: 'bacon' },
-          { text: 'Овощи', value:'vegetables' },
-          { text: 'Колбаса', value: 'sausage' },
-          { text: 'Сыр', value:'mozzarella' },
-          { text: 'Картофель', value: 'carrot' },
-        ]}
-        items = {[
-          { text: 'Пепперони', value: 'pepperoni' },
-          { text: 'Бекон', value: 'bacon' },
-          { text: 'Овощи', value:'vegetables' },
-          { text: 'Колбаса', value: 'sausage' },
-          { text: 'Сыр', value:'mozzarella' },
-          { text: 'Картофель', value: 'carrot' },
-        ]}
+        defaultItems={items.slice(0,6)}
+        items={items}
       />
     </div>
   )
