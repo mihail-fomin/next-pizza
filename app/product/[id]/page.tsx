@@ -1,11 +1,15 @@
 import React from 'react'
 
-type Props = {}
+type Props = {
+    params: {
+        id: string
+    }
+}
 
-function page({}: Props) {
+function ProductPage({ params: { id }}: Props) {
   return (
-    <div>page</div>
+    <div>{id}</div>
   )
 }
 
-export default page
+export default ProductPage

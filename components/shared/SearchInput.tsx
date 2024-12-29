@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { Api } from '@/services/api-client';
+import { API } from '@/services/api-client';
 import { Product } from '@prisma/client';
 import { Search } from 'lucide-react';
 import Link from 'next/link';
@@ -16,28 +16,25 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
   const [searchQuery, setSearchQuery] = React.useState('');
   const [focused, setFocused] = React.useState(false);
   const [products, setProducts] = React.useState<Product[]>([]);
+
   const ref = React.useRef(null);
 
   useClickAway(ref, () => {
     setFocused(false);
   });
 
-  React.useEffect(() => {
-    Api.prodcuts.search(searchQuery)
-  }, [searchQuery])
-
-//   useDebounce(
-//     async () => {
-//       try {
-//         const response = await Api.products.search(searchQuery);
-//         setProducts(response);
-//       } catch (error) {
-//         console.log(error);
-//       }
-//     },
-//     250,
-//     [searchQuery],
-//   );
+  useDebounce(
+    async () => {
+      try {
+        const response = await API.products.search(searchQuery);
+        setProducts(response);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    250,
+    [searchQuery],
+  );
 
   const onClickItem = () => {
     setFocused(false);
