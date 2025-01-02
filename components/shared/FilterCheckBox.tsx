@@ -25,10 +25,10 @@ export const FilterCheckbox: React.FC<FilterChecboxProps> = ({
                 checked={checked}
                 value={id}
                 className="rounded-[8px] w-6 h-6"
-                id={`checkbox-${String(name)}-${String(id)}`}
+                id={`checkbox-${String(text)}-${String(id)}`}
             />
             <label
-                htmlFor={`checkbox-${String(name)}-${String(id)}`}
+                htmlFor={`checkbox-${String(text)}-${String(id)}`}
                 className="leading-none cursor-pointer flex-1"
             >
                 {text}
