@@ -81,6 +81,7 @@ export default function CheckboxFiltersGroup({
                     <FilterCheckbox
                         key={index}
                         text={item.text}
+                        name={item.name}
                         id={item.id}
                         endAdornment={item.endAdornment}
                         checked={selectedIds?.has(item.id)}
