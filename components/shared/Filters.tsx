@@ -11,10 +11,10 @@ import { useFilterIngredients } from '@/app/hooks/useFilterIngredients'
 type Props = {}
 
 const Filters = (props: Props) => {
-    const { ingredients } = useFilterIngredients()
+    const { ingredients, onAddId, selectedIds } = useFilterIngredients()
 
     const items = ingredients.map((item) => ({
-        value: String(item.id),
+        id: String(item.id),
         text: item.name,
     }))
 
@@ -23,8 +23,8 @@ const Filters = (props: Props) => {
             <Title text="Фильтрация" size="sm" className="mb-5 font-bold" />
 
             <div className="flex flex-col gap-4">
-                <FilterCheckbox text="Можно собирать" value="1" />
-                <FilterCheckbox text="Можно собирать" value="2" />
+                <FilterCheckbox text="Можно собирать" id="1" />
+                <FilterCheckbox text="Можно собирать" id="2" />
             </div>
 
             <div className="mt-5 border-y border-y-neutral-100 py-6 pb-7">
@@ -54,6 +54,8 @@ const Filters = (props: Props) => {
                 limit={5}
                 defaultItems={items.slice(0, 6)}
                 items={items}
+                onClickCheckbox={onAddId}
+                selectedIds={selectedIds}
             />
         </div>
     )
