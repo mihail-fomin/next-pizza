@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { Title } from './Title'
 import { FilterCheckbox } from './FilterCheckBox'
 import { Input } from '../ui'
@@ -10,8 +10,24 @@ import { useFilterIngredients } from '@/app/hooks/useFilterIngredients'
 
 type Props = {}
 
+type PriceProps = {
+    priceFrom: number
+    priceTo: number
+}
+
 const Filters = (props: Props) => {
     const { ingredients, onAddId, selectedIds } = useFilterIngredients()
+    const [{ priceFrom, priceTo }, setPrices] = useState<PriceProps>({
+        priceFrom: 0,
+        priceTo: 5000,
+    })
+
+    const handleChangePrice = (name: keyof PriceProps, value: number) => {
+        setPrices({
+            ...{ priceFrom, priceTo },
+            [name]: value,
+        })
+    }
 
     const items = ingredients.map((item) => ({
         id: String(item.id),
@@ -31,21 +47,38 @@ const Filters = (props: Props) => {
                 <div className="flex gap-3 mb-5">
                     <Input
                         type="number"
-                        placeholder="0"
+                        placeholder={String(priceFrom)}
                         min={0}
                         max={1000}
-                        defaultValue={0}
+                        value={priceFrom}
+                        onChange={(e) =>
+                            handleChangePrice(
+                                'priceFrom',
+                                Number(e.target.value),
+                            )
+                        }
                     />
                     <Input
                         type="number"
-                        placeholder="1000"
+                        placeholder={String(priceTo)}
                         min={100}
                         max={1000}
-                        defaultValue={500}
+                        value={priceTo}
+                        onChange={(e) =>
+                            handleChangePrice('priceTo', Number(e.target.value))
+                        }
                     />
                 </div>
 
-                <RangeSlider min={0} max={5000} step={10} value={[0, 5000]} />
+                <RangeSlider
+                    min={0}
+                    max={1000}
+                    step={10}
+                    value={[priceFrom, priceTo]}
+                    onValueChange={([priceFrom, priceTo]) =>
+                        setPrices({ priceFrom, priceTo })
+                    }
+                />
             </div>
 
             <CheckboxFiltersGroup
