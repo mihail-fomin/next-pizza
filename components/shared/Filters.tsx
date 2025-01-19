@@ -7,6 +7,7 @@ import { Input } from '../ui'
 import { RangeSlider } from './Range-slider'
 import CheckboxFiltersGroup from '../ui/checkbox-filters-group'
 import { useFilterIngredients } from '@/app/hooks/useFilterIngredients'
+import { useSet } from 'react-use'
 
 type Props = {}
 
@@ -17,6 +18,9 @@ type PriceProps = {
 
 const Filters = (props: Props) => {
     const { ingredients, onAddId, selectedIds } = useFilterIngredients()
+
+    const [sizes, { toggle: toggleSizes }] = useSet(new Set<string>([]))
+
     const [{ priceFrom, priceTo }, setPrices] = useState<PriceProps>({
         priceFrom: 0,
         priceTo: 5000,
@@ -38,10 +42,23 @@ const Filters = (props: Props) => {
         <div>
             <Title text="Фильтрация" size="sm" className="mb-5 font-bold" />
 
-            <div className="flex flex-col gap-4">
+            <CheckboxFiltersGroup
+                title="Размеры"
+                name="sizes"
+                className="mb-5"
+                onClickCheckbox={toggleSizes}
+                values={sizes}
+                items={[
+                    { text: '20см', id: '20' },
+                    { text: '30см', id: '30' },
+                    { text: '40см', id: '40' },
+                ]}
+            />
+
+            {/* <div className="flex flex-col gap-4">
                 <FilterCheckbox text="Можно собирать" id="1" />
                 <FilterCheckbox text="Можно собирать" id="2" />
-            </div>
+            </div> */}
 
             <div className="mt-5 border-y border-y-neutral-100 py-6 pb-7">
                 <div className="flex gap-3 mb-5">
@@ -88,7 +105,7 @@ const Filters = (props: Props) => {
                 defaultItems={items.slice(0, 6)}
                 items={items}
                 onClickCheckbox={onAddId}
-                selectedIds={selectedIds}
+                values={selectedIds}
             />
         </div>
     )
