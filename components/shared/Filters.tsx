@@ -17,9 +17,12 @@ type PriceProps = {
 }
 
 const Filters = (props: Props) => {
-    const { ingredients, onAddId, selectedIds } = useFilterIngredients()
+    const { ingredients, onAddId, selectedIngredients } = useFilterIngredients()
 
     const [sizes, { toggle: toggleSizes }] = useSet(new Set<string>([]))
+    const [pizzaTypes, { toggle: togglePizzaTypes }] = useSet(
+        new Set<string>([]),
+    )
 
     const [{ priceFrom, priceTo }, setPrices] = useState<PriceProps>({
         priceFrom: 0,
@@ -41,6 +44,18 @@ const Filters = (props: Props) => {
     return (
         <div>
             <Title text="Фильтрация" size="sm" className="mb-5 font-bold" />
+
+            <CheckboxFiltersGroup
+                title="Тип теста"
+                name="pizzaTypes"
+                className="mb-5"
+                onClickCheckbox={togglePizzaTypes}
+                values={pizzaTypes}
+                items={[
+                    { text: 'Тонкое', id: '1' },
+                    { text: 'Традиционное', id: '2' },
+                ]}
+            />
 
             <CheckboxFiltersGroup
                 title="Размеры"
@@ -105,7 +120,7 @@ const Filters = (props: Props) => {
                 defaultItems={items.slice(0, 6)}
                 items={items}
                 onClickCheckbox={onAddId}
-                values={selectedIds}
+                values={selectedIngredients}
             />
         </div>
     )
